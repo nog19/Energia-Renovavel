@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Energia Hídrica - EcoEnergy</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    
+    .page-hero {
+      background: linear-gradient(135deg, #1a3a5c 0%, #1565c0 100%);
+      padding: 8rem 2rem 5rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .page-hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="1" fill="rgba(255,255,255,0.1)"/></svg>') repeat;
+      opacity: 0.3;
+    }
+
+    .page-hero h1 {
+      font-size: 3rem;
+      color: #fff;
+      margin-bottom: 1rem;
+      position: relative;
+    }
+
+    .page-hero p {
+      font-size: 1.2rem;
+      color: rgba(255,255,255,0.8);
+      max-width: 600px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .content-section {
+      padding: 4rem 2rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .info-card {
+      background: #fff;
+      padding: 2rem;
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    .info-card h3 {
+      color: #1565c0;
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .info-card p {
+      color: #555;
+      line-height: 1.8;
+    }
+
+    .stat-box {
+      background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+      padding: 2rem;
+      border-radius: 15px;
+      text-align: center;
+      margin: 2rem 0;
+    }
+
+    .stat-box .number {
+      font-size: 3rem;
+      font-weight: bold;
+      color: #1565c0;
+    }
+
+    .stat-box .label {
+      font-size: 1.1rem;
+      color: #555;
+      margin-top: 0.5rem;
+    }
+
+    .how-it-works {
+      background: #f5f5f5;
+      padding: 4rem 2rem;
+    }
+
+    .steps {
+      max-width: 800px;
+      margin: 2rem auto;
+    }
+
+    .step {
+      display: flex;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+      align-items: flex-start;
+    }
+
+    .step-number {
+      width: 50px;
+      height: 50px;
+      background: #1565c0;
+      color: #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      font-weight: bold;
+      flex-shrink: 0;
+    }
+
+    .step-content h4 {
+      color: #1565c0;
+      margin-bottom: 0.5rem;
+    }
+
+    .step-content p {
+      color: #555;
+      line-height: 1.7;
+    }
+
+    .advantages-section {
+      padding: 4rem 2rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .advantages-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .advantage-item {
+      background: #fff;
+      padding: 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      border-left: 4px solid #1565c0;
+      transition: transform 0.3s ease;
+    }
+
+    .advantage-item:hover {
+      transform: translateY(-5px);
+    }
+
+    .advantage-item h4 {
+      color: #1565c0;
+      margin-bottom: 0.5rem;
+    }
+
+    .advantage-item p {
+      color: #666;
+      font-size: 0.95rem;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: #1565c0;
+      font-weight: 600;
+      margin-bottom: 2rem;
+      transition: transform 0.3s ease;
+    }
+
+    .back-link:hover {
+      transform: translateX(-5px);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navegação -->
+  <nav>
+    <a class="logo" href="index.html"><i class="fas fa-leaf"></i> EcoEnergy</a>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="index.html#energias">Energias</a></li>
+      <li><a href="index.html#quiz">Quiz</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero da Página -->
+  <section class="page-hero">
+    <h1><i class="fas fa-water"></i> Energia Hídrica</h1>
+    <p>A força dos rios transformando o Brasil e o mundo em energia limpa e renovável.</p>
+  </section>
+
+  <!-- Introdução -->
+  <section class="content-section">
+    <a href="index.html" class="back-link"><i class="fas fa-arrow-left"></i> Voltar para Home</a>
+    
+    <h2>O que é Energia Hídrica?</h2>
+    <p>A energia hídrica (ou energia hidrelétrica) é obtida a partir do aproveitamento da energia cinética e potencial da água dos rios, quedas d'água e barragens. É considerada uma das formas mais limpas e eficientes de produção de energia elétrica, sendo fundamental na matriz energética brasileira.</p>
+
+    <div class="stat-box">
+      <div class="number">60%</div>
+      <div class="label">da matriz elétrica brasileira vem de hidrelétricas</div>
+    </div>
+  </section>
+
+  <!-- Como Funciona -->
+  <section class="how-it-works">
+    <div class="content-section">
+      <h2>Como Funciona uma Hidrelétrica?</h2>
+      <p>O processo de geração de energia hidrelétrica é fascinante e utiliza a força natural da água para produzir eletricidade. Veja o passo a passo:</p>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step-number">1</div>
+          <div class="step-content">
+            <h4>Acumulação de Água</h4>
+            <p>A água dos rios é armazenada em grandes reservatórios através de barragens. Essa acumulação cria uma diferença de nível (queda) entre a superfície da água e as turbinas.</p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-number">2</div>
+          <div class="step-content">
+            <h4>Passagem pela Turbina</h4>
+            <p>A água é conduzida por túneis ou condutos até as turbinas. A força da água em movimento faz a turbina girar, convertendo energia potencial em energia mecânica.</p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-number">3</div>
+          <div class="step-content">
+            <h4>Geração de Eletricidade</h4>
+            <p>A turbina está conectada a um gerador. Quando a turbina gira, o gerador produz energia elétrica através do princípio da indução eletromagnética.</p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-number">4</div>
+          <div class="step-content">
+            <h4>Transmissão e Distribuição</h4>
+            <p>A eletricidade é transformada para alta tensão e enviada através de linhas de transmissão para subestações, onde é distribuída aos consumidores.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tipos de Hidrelétricas -->
+  <section class="content-section">
+    <h2>Tipos de Hidrelétricas</h2>
+    
+    <div class="info-grid">
+      <div class="info-card">
+        <h3><i class="fas fa-database"></i> Reservatório</h3>
+        <p>Utilizam grandes lagos artificiais formados por barragens. Permitem regularizar o fluxo de água e armazenar energia para períodos de seca. Exemplo: Itaipu, Tucuruí.</p>
+      </div>
+
+      <div class="info-card">
+        <h3><i class="fas fa-stream"></i> Fio d'água</h3>
+        <p>Não possuem reservatório significativo, utilizando apenas o fluxo natural do rio. São menos impactantes ambientalmente, mas dependem da vazão do rio. Exemplo: Pequenas centrais no Sul do Brasil.</p>
+      </div>
+
+      <div class="info-card">
+        <h3><i class="fas fa-mountain"></i> Açude</h3>
+        <p>Utilizam a estrutura de açudes já existentes para geração de energia. Comuns no Nordeste brasileiro, onde também servem para armazenamento de água.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Vantagens -->
+  <section class="advantages-section">
+    <h2>Vantagens da Energia Hídrica</h2>
+    
+    <div class="advantages-grid">
+      <div class="advantage-item">
+        <h4><i class="fas fa-recycle"></i> Renovável</h4>
+        <p>A água dos rios é um recurso natural que se renova constantemente com as chuvas.</p>
+      </div>
+
+      <div class="advantage-item">
+        <h4><i class="fas fa-leaf"></i> Limpa</h4>
+        <p>Não emite gases de efeito estufa durante a operação, sendo uma energia limpa.</p>
+      </div>
+
+      <div class="advantage-item">
+        <h4><i class="fas fa-tachometer-alt"></i> Eficiente</h4>
+        <p>Rendimento de mais de 90%, muito superior a outras fontes de energia.</p>
+      </div>
+
+      <div class="advantage-item">
+        <h4><i class="fas fa-water"></i> Armazenamento</h4>
+        <p>Os reservatórios podem armazenar água para gerar energia quando necessário.</p>
+      </div>
+
+      <div class="advantage-item">
+        <h4><i class="fas fa-ship"></i> Multipropósito</h4>
+        <p>Além de energia, servem para navegação, controle de enchentes e irrigação.</p>
+      </div>
+
+      <div class="advantage-item">
+        <h4><i class="fas fa-history"></i> Longa Duração</h4>
+        <p>Usinas hidrelétricas podem operar por mais de 50 anos com manutenção adequada.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Maiores Hidrelétricas -->
+  <section class="content-section">
+    <h2>Maiores Hidrelétricas do Mundo</h2>
+    
+    <div class="info-grid">
+      <div class="info-card">
+        <h3>1. Three Gorges (China)</h3>
+        <p>22.500 MW de capacidade. A maior usina hidrelétrica do mundo, localizada no rio Yangtzé.</p>
+      </div>
+
+      <div class="info-card">
+        <h3>2. Itaipu (Brasil/Paraguai)</h3>
+        <p>14.000 MW de capacidade. Uma das maiores do mundo, compartilhada entre Brasil e Paraguai.</p>
+      </div>
+
+      <div class="info-card">
+        <h3>3. Xiluodu (China)</h3>
+        <p>13.860 MW de capacidade. Localizada no rio Jinsha, na China.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Rodapé -->
+  <footer>
+    <p>© 2026 Projeto Energias Renováveis - UNIP</p>
+    <p>Um projeto colaborativo sobre fontes de energia limpa e sustentável.</p>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="index.html#energias">Energias</a>
+      <a href="index.html#quiz">Quiz</a>
+    </div>
+  </footer>
+
+</body>
+</html>

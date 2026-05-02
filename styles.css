@@ -244,7 +244,7 @@ section > p {
   line-height: 1.8;
 }
 
-/* Cards de Energia */
+/* Cards de Energia  */
 .energy-cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -253,13 +253,17 @@ section > p {
 }
 
 .energy-card {
-  background: var(--bg-white);
+  background: #ffffff;
   border-radius: 15px;
   overflow: hidden;
-  box-shadow: var(--shadow);
-  transition: var(--transition);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  padding: 15px;
+  position: relative; 
   cursor: pointer;
-  position: relative;
 }
 
 .energy-card::before {
@@ -271,7 +275,7 @@ section > p {
   height: 4px;
   background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
   transform: scaleX(0);
-  transition: var(--transition);
+  transition: transform 0.3s ease;
 }
 
 .energy-card:hover {
@@ -283,41 +287,43 @@ section > p {
   transform: scaleX(1);
 }
 
+/* Área do Ícone  */
 .energy-card-img {
-  height: 150px;
-  background: linear-gradient(135deg, var(--primary-light) 0%, #fff 100%);
+  height: 160px;
+  background-color: #f1f4f1 !important;
+  border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 4rem;
-}
-
-.energy-card-content {
-  padding: 1.5rem;
+  margin-bottom: 1.2rem;
 }
 
 .energy-card h3 {
-  color: var(--text-dark);
+  color: #1a1a1a;
   font-size: 1.4rem;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.8rem;
 }
 
 .energy-card p {
-  color: var(--text-light);
+  color: #666;
   font-size: 0.95rem;
+  line-height: 1.5;
+  margin-bottom: 1rem;
 }
 
 .energy-card .link-text {
   color: var(--primary-color);
   font-weight: 600;
-  margin-top: 1rem;
-  display: inline-block;
-  transition: var(--transition);
+  text-decoration: none;
+  margin-top: auto;
+  transition: margin-left 0.3s ease;
 }
 
 .energy-card:hover .link-text {
-  margin-left: 5px;
+  margin-left: 5px; 
 }
+
 
 /* Seção importantes */
 .importance-section {
@@ -708,4 +714,212 @@ hr {
 .scroll-animate.visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* Reset e Variáveis Modernizadas */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --primary: #2ecc71;
+  --primary-dark: #27ae60;
+  --secondary: #3498db;
+  --dark: #1e272e;
+  --light: #f8f9fa;
+  --glass: rgba(255, 255, 255, 0.9);
+  --shadow-sm: 0 2px 10px rgba(0,0,0,0.05);
+  --shadow-lg: 0 10px 30px rgba(0,0,0,0.1);
+  --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background-color: #f0f2f5;
+  color: var(--dark);
+  line-height: 1.6;
+}
+
+/* Navegação Estilizada */
+nav {
+  background: var(--glass);
+  backdrop-filter: blur(10px);
+  padding: 1rem 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+/* Hero Section com Gradiente Suave */
+.hero {
+  background: radial-gradient(circle at top right, #2d5a2d, #1a1a1a);
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-align: center;
+  padding: 0 2rem;
+}
+
+.hero h1 span {
+  color: var(--primary);
+}
+
+/* Novo: Seção de Impacto Ambiental */
+.impact-calculator {
+  background: var(--light);
+  padding: 4rem 2rem;
+  border-radius: 20px;
+  margin: 2rem auto;
+  max-width: 800px;
+  box-shadow: var(--shadow-lg);
+}
+
+.impact-option {
+  background: white;
+  margin: 10px 0;
+  padding: 15px;
+  border-radius: 10px;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: var(--transition);
+}
+
+.impact-option:hover {
+  border-color: var(--primary);
+  transform: scale(1.02);
+}
+
+/* Botão de Compartilhamento */
+.share-btn {
+  background: #1da1f2;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 30px;
+  border: none;
+  cursor: pointer;
+  display: none;
+  margin-top: 20px;
+  font-weight: bold;
+}
+
+/* Cards de Energia - Design Orgânico */
+.energy-card {
+  background: white;
+  border-radius: 24px;
+  padding: 2rem;
+  transition: var(--transition);
+  border: 1px solid rgba(0,0,0,0.05);
+}
+
+.energy-card:hover {
+  transform: translateY(-12px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Animações de Scroll */
+.scroll-animate {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: var(--transition);
+}
+
+.scroll-animate.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Refinamentos para tirar o aspecto genérico */
+body {
+    font-family: 'Inter', sans-serif; /* Fonte mais moderna */
+    background-color: #fcfcfc;
+}
+
+/* Glassmorphism suave na navegação */
+nav {
+    background: rgba(26, 26, 26, 0.95) !important;
+    backdrop-filter: blur(8px);
+}
+
+/* Deixando os cards com cara de interface moderna */
+.energy-card, .context-card, .info-card {
+    border: 1px solid rgba(0,0,0,0.05) !important;
+    border-radius: 20px !important;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+}
+
+/* Novo layout para o Teste de Impacto */
+.impact-calculator {
+    background: white;
+    padding: 3rem;
+    border-radius: 20px;
+    margin: 40px auto;
+    max-width: 900px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    border: 1px solid #eef2f3;
+}
+
+.impact-option {
+    display: block;
+    background: #f8fafc;
+    margin: 12px 0;
+    padding: 18px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: 0.3s;
+    border: 2px solid transparent;
+}
+
+.impact-option:hover {
+    background: #f1f5f9;
+    border-color: var(--primary-color);
+}
+
+.share-btn {
+    background: #000; /* Estilo minimalista tipo X/Twitter */
+    color: white;
+    padding: 12px 25px;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+    display: none;
+    font-weight: 600;
+    margin-top: 20px;
+}
+
+
+
+/* Botão de Redirecionamento para Impacto */
+.btn-impact {
+    background: var(--primary-color);
+    color: white;
+    padding: 15px 35px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-block;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+    border: 2px solid transparent;
+}
+
+.btn-impact:hover {
+    background: transparent;
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(76, 175, 80, 0.2);
+}
+
+.btn-impact i {
+    margin-left: 10px;
 }

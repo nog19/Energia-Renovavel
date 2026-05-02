@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoImpacto | UNIP</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #4caf50;
+            --secondary: #2196f3;
+            --accent: #ff9800;
+            --glass: rgba(255, 255, 255, 0.1);
+            --glass-text: rgba(255, 255, 255, 0.9);
+            --card-bg: #f1f4f1; /* Cor dos cards da sua index */
+        }
+
+        body {
+            /* Gradiente idêntico ao seu Hero Section */
+            background: radial-gradient(circle at top right, #2d5a2d, #1a1a1a);
+            font-family: 'Inter', -apple-system, sans-serif;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            overflow-x: hidden;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.98);
+            color: #1a1a1a;
+            max-width: 600px;
+            width: 90%;
+            padding: 40px;
+            border-radius: 24px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+            position: relative;
+            transition: all 0.5s ease;
+        }
+
+        /* Animações de Transição */
+        .fade-in { animation: fadeIn 0.5s forwards; }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Barra de Progresso */
+        .progress-wrapper {
+            height: 6px;
+            background: #eee;
+            border-radius: 10px;
+            margin: 25px 0;
+            overflow: hidden;
+        }
+        #progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            width: 15%;
+            transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Questões */
+        .question-card h2 { font-size: 1.5rem; margin-bottom: 25px; color: #2d5a2d; }
+        
+        .options-grid { display: grid; gap: 12px; }
+        
+        .option {
+            background: var(--card-bg);
+            padding: 18px;
+            border-radius: 15px;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-weight: 500;
+        }
+
+        .option:hover {
+            background: #e8eee8;
+            transform: scale(1.02);
+        }
+
+        .option.selected {
+            border-color: var(--primary);
+            background: #ffffff;
+            box-shadow: 0 8px 20px rgba(76, 175, 80, 0.15);
+        }
+
+        .option i { color: var(--primary); font-size: 1.2rem; }
+
+        /* Resultado e Dicas */
+        .result-screen { display: none; text-align: center; }
+        .score-circle {
+            width: 120px;
+            height: 120px;
+            border: 8px solid var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin: 0 auto 20px;
+            color: var(--primary);
+        }
+
+        .tip-box {
+            background: #fff9c4;
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 25px;
+            text-align: left;
+            border-left: 5px solid var(--accent);
+        }
+
+        .tip-box h4 { margin: 0 0 10px 0; color: #856404; }
+
+        /* Botões */
+        .btn-action {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            margin-top: 20px;
+            width: 100%;
+            transition: 0.3s;
+        }
+
+        .btn-action:hover { filter: brightness(1.1); transform: translateY(-2px); }
+
+        .share-row { display: flex; gap: 10px; margin-top: 15px; }
+        .btn-sm { flex: 1; padding: 10px; border-radius: 8px; border: none; color: white; cursor: pointer; font-size: 0.9rem; }
+        .wa { background: #25d366; }
+        .ig { background: #e1306c; }
+    </style>
+</head>
+<body>
+
+<div class="container fade-in">
+    <div id="quiz-ui">
+        <span id="step-count" style="color: #666; font-size: 0.9rem; font-weight: 600;">Questão 1 de 6</span>
+        <div class="progress-wrapper"><div id="progress-bar"></div></div>
+        
+        <div id="question-container" class="question-card">
+            <!-- As perguntas serão inseridas aqui via JS -->
+        </div>
+
+        <button class="btn-action" onclick="nextQuestion()" id="btn-next" style="display:none">Próxima</button>
+    </div>
+
+    <div id="result-ui" class="result-screen">
+        <h2>Seu Desempenho Ecológico</h2>
+        <div class="score-circle" id="final-score">0</div>
+        <p id="feedback-msg" style="font-weight: 600; font-size: 1.1rem;"></p>
+        
+        <div class="tip-box" id="daily-tip">
+            <h4><i class="fas fa-lightbulb"></i> Dica para seu cotidiano:</h4>
+            <p id="tip-content"></p>
+        </div>
+
+        <div class="share-row">
+            <button class="btn-sm wa" onclick="share('wa')"><i class="fab fa-whatsapp"></i> WhatsApp</button>
+            <button class="btn-sm ig" onclick="copyInsta()"><i class="fab fa-instagram"></i> Copiar Story</button>
+        </div>
+        <a href="index.html" style="display:block; margin-top:20px; color:#666; text-decoration:none;">Voltar ao início</a>
+    </div>
+</div>
+
+<script>
+    const questions = [
+        { q: "Com que frequência você apaga as luzes ao sair de um cômodo?", 
+          options: [
+            {t: "Sempre, sou rigoroso", p: 0, d: "Excelente hábito! Você economiza cerca de 10% na conta."},
+            {t: "Às vezes esqueço", p: 10},
+            {t: "Raramente me preocupo", p: 20}
+          ]},
+        { q: "Qual a duração média do seu banho?", 
+          options: [
+            {t: "Até 5 minutos", p: 0, d: "Banhos rápidos economizam até 40 litros de água por vez!"},
+            {t: "De 10 a 15 minutos", p: 15},
+            {t: "Mais de 20 minutos", p: 30}
+          ]},
+        { q: "Como você descarta pilhas e eletrônicos?", 
+          options: [
+            {t: "Pontos de coleta específicos", p: 0},
+            {t: "Lixo comum", p: 25, d: "Cuidado! Metais pesados contaminam o solo. Busque postos em supermercados."}
+          ]},
+        { q: "Você utiliza sacolas reutilizáveis (ecobags)?", 
+          options: [
+            {t: "Sempre levo a minha", p: 0},
+            {t: "Uso as de plástico do mercado", p: 15, d: "Uma sacola plástica leva 400 anos para se decompor."}
+          ]},
+        { q: "Consumo de carne vermelha na semana:", 
+          options: [
+            {t: "0 a 2 vezes", p: 0},
+            {t: "3 a 5 vezes", p: 15},
+            {t: "Todos os dias", p: 25, d: "Reduzir um dia de carne economiza água equivalente a 3 meses de banho."}
+          ]},
+        { q: "Você costuma deixar aparelhos em stand-by (luzinha acesa)?", 
+          options: [
+            {t: "Não, tiro da tomada", p: 0},
+            {t: "Sim, ficam ligados", p: 10, d: "O stand-by pode representar 12% do consumo de energia da casa."}
+          ]}
+    ];
+
+    let currentStep = 0;
+    let totalPoints = 0;
+    let selectedPoints = -1;
+
+    function loadQuestion() {
+        const q = questions[currentStep];
+        document.getElementById('step-count').innerText = `Questão ${currentStep + 1} de ${questions.length}`;
+        document.getElementById('progress-bar').style.width = ((currentStep + 1) / questions.length * 100) + "%";
+        
+        let html = `<h2>${q.q}</h2><div class="options-grid">`;
+        q.options.forEach((opt, index) => {
+            html += `<div class="option" onclick="selectOpt(${opt.p}, this)">
+                        <i class="fas fa-check-circle"></i> ${opt.t}
+                    </div>`;
+        });
+        html += `</div>`;
+        document.getElementById('question-container').innerHTML = html;
+        document.getElementById('btn-next').style.display = 'none';
+    }
+
+    function selectOpt(pts, el) {
+        selectedPoints = pts;
+        const opts = document.querySelectorAll('.option');
+        opts.forEach(o => o.classList.remove('selected'));
+        el.classList.add('selected');
+        document.getElementById('btn-next').style.display = 'block';
+    }
+
+    function nextQuestion() {
+        totalPoints += selectedPoints;
+        currentStep++;
+        if (currentStep < questions.length) {
+            const container = document.querySelector('.container');
+            container.style.opacity = '0';
+            setTimeout(() => {
+                loadQuestion();
+                container.style.opacity = '1';
+            }, 300);
+        } else {
+            showResult();
+        }
+    }
+
+    function showResult() {
+        document.getElementById('quiz-ui').style.display = 'none';
+        document.getElementById('result-ui').style.display = 'block';
+        document.getElementById('final-score').innerText = totalPoints;
+
+        let msg = "";
+        let tip = "";
+
+        if(totalPoints <= 30) {
+            msg = "Parabéns! Você é um exemplo de sustentabilidade! ✨";
+            tip = "Para ir além, que tal começar uma pequena composteira doméstica? Reduz o lixo orgânico em 50%.";
+        } else if(totalPoints <= 70) {
+            msg = "Você está no caminho certo, mas pequenas mudanças farão diferença.";
+            tip = "Dica: Instale arejadores nas torneiras. Eles dão sensação de fluxo forte gastando metade da água.";
+        } else {
+            msg = "Atenção: Seu impacto ambiental está alto. Vamos mudar isso?";
+            tip = "Comece pelo básico: Ao escovar os dentes, feche a torneira. Isso economiza 12 litros de água em 2 minutos.";
+        }
+
+        document.getElementById('feedback-msg').innerText = msg;
+        document.getElementById('tip-content').innerText = tip;
+    }
+
+    function share(p) {
+        const text = `Meu nível de impacto ambiental no EcoEnergy foi ${totalPoints}! Calcule o seu também e ajude o planeta. 🌍`;
+        if(p === 'wa') window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(text)}`);
+    }
+
+    function copyInsta() {
+        const text = `Eco-Score: ${totalPoints} pontos! 🌿\nProjeto EcoEnergy - UNIP`;
+        navigator.clipboard.writeText(text);
+        alert("Copiado! Poste no seu Story e marque o pessoal!");
+    }
+
+    loadQuestion();
+</script>
+</body>
+</html>

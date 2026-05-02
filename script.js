@@ -389,3 +389,46 @@ document.addEventListener('DOMContentLoaded', function() {
 window.mudarCategoria = mudarCategoria;
 window.reiniciarQuiz = reiniciarQuiz;
 window.proximaPergunta = proximaPergunta;
+
+// Teste de Impacto Ambiental
+function calcularImpacto() {
+    const habitos = document.querySelectorAll('.impact-check:checked');
+    const resultDiv = document.getElementById('impact-result');
+    const shareBtn = document.getElementById('share-impact-btn');
+    
+    let pontos = habitos.length;
+    let mensagem = "";
+    
+    if(pontos <= 2) mensagem = "🌱 Iniciante Ecológico: Você está começando sua jornada sustentável!";
+    else if(pontos <= 4) mensagem = "🌿 Defensor da Natureza: Seus hábitos já fazem a diferença!";
+    else mensagem = "🌍 Herói do Planeta: Você é uma inspiração para a sustentabilidade!";
+    
+    resultDiv.innerHTML = `<h3>Seu Resultado:</h3><p>${mensagem}</p>`;
+    resultDiv.style.display = 'block';
+    shareBtn.style.display = 'inline-block';
+    
+    // Preparar texto para redes sociais
+    const textoCompartilhar = `Eu sou um ${mensagem.split(':')[0]}! Faça o teste de impacto ambiental no site EcoEnergy da UNIP.`;
+    shareBtn.onclick = () => {
+        window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(textoCompartilhar)}`, '_blank');
+    };
+}
+
+// Mantendo as funções do Quiz e Animações originais com melhorias
+document.addEventListener('DOMContentLoaded', function() {
+    // Observer para animações de scroll
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.scroll-animate').forEach(el => observer.observe(el));
+    
+    // Iniciar quiz se existir na página
+    if (document.getElementById('quiz-container')) {
+        iniciarQuiz('solar');
+    }
+});

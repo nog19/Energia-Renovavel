@@ -168,7 +168,6 @@
 
         <div class="share-row">
             <button class="btn-sm wa" onclick="share('wa')"><i class="fab fa-whatsapp"></i> WhatsApp</button>
-            <button class="btn-sm ig" onclick="copyInsta()"><i class="fab fa-instagram"></i> Copiar Story</button>
         </div>
         <a href="index.html" style="display:block; margin-top:20px; color:#666; text-decoration:none;">Voltar ao início</a>
     </div>
@@ -282,11 +281,6 @@
         if(p === 'wa') window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(text)}`);
     }
 
-    function copyInsta() {
-        const text = `Eco-Score: ${totalPoints} pontos! 🌿\nProjeto EcoEnergy - UNIP`;
-        navigator.clipboard.writeText(text);
-        alert("Copiado! Poste no seu Story e marque o pessoal!");
-    }
 
     loadQuestion();
 </script>

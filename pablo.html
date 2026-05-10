@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Energia Solar</title>
+
+<style>
+
+/* ===== DESIGN MODERNO ===== */
+
+body{
+font-family: Arial, sans-serif;
+margin:0;
+padding:0;
+background:linear-gradient(to bottom,#f5f7fa,#dfe9f3);
+color:#333;
+scroll-behavior:smooth;
+}
+
+/* HEADER */
+
+header{
+background:linear-gradient(90deg,#ff9800,#ffb300);
+color:white;
+padding:45px;
+text-align:center;
+box-shadow:0 4px 10px rgba(0,0,0,0.2);
+}
+
+header h1{
+font-size:45px;
+margin:0;
+}
+
+header p{
+font-size:20px;
+margin-top:10px;
+}
+
+/* MENU */
+
+nav{
+background:#222;
+padding:15px;
+display:flex;
+justify-content:center;
+flex-wrap:wrap;
+position:sticky;
+top:0;
+z-index:1000;
+box-shadow:0 2px 10px rgba(0,0,0,0.2);
+}
+
+nav button{
+background:linear-gradient(90deg,#ff9800,#ffb300);
+border:none;
+padding:12px 20px;
+margin:6px;
+color:white;
+font-size:16px;
+font-weight:bold;
+cursor:pointer;
+border-radius:10px;
+transition:0.3s;
+}
+
+nav button:hover{
+transform:translateY(-3px) scale(1.05);
+box-shadow:0 4px 10px rgba(0,0,0,0.3);
+}
+
+/* SEÇÕES */
+
+section{
+display:none;
+padding:35px;
+animation:fade 0.7s;
+}
+
+#inicio{
+display:block;
+}
+
+/* CARDS */
+
+.card{
+background:white;
+padding:30px;
+border-radius:18px;
+margin-bottom:30px;
+box-shadow:0 5px 15px rgba(0,0,0,0.15);
+transition:0.4s;
+}
+
+.card:hover{
+transform:translateY(-5px);
+}
+
+.card h2{
+color:#ff9800;
+font-size:32px;
+margin-bottom:15px;
+}
+
+.card h3{
+color:#ff9800;
+margin-top:20px;
+}
+
+.card p{
+line-height:1.8;
+font-size:18px;
+}
+
+/* LISTAS */
+
+ul{
+padding-left:20px;
+}
+
+ul li{
+margin-bottom:10px;
+font-size:18px;
+}
+
+/* IMAGENS */
+
+img{
+width:100%;
+max-width:650px;
+display:block;
+margin:25px auto;
+border-radius:15px;
+transition:0.5s;
+box-shadow:0 4px 15px rgba(0,0,0,0.2);
+}
+
+img:hover{
+transform:scale(1.03);
+}
+
+/* QUIZ */
+
+.quiz button{
+display:block;
+margin-top:12px;
+padding:12px;
+width:280px;
+border:none;
+background:linear-gradient(90deg,#ff9800,#ffb300);
+color:white;
+font-size:16px;
+border-radius:10px;
+cursor:pointer;
+transition:0.3s;
+}
+
+.quiz button:hover{
+transform:scale(1.05);
+}
+
+/* TABELA */
+
+table{
+width:100%;
+border-collapse:collapse;
+margin-top:20px;
+overflow:hidden;
+border-radius:10px;
+}
+
+table, th, td{
+border:1px solid #ccc;
+}
+
+th{
+background:#ff9800;
+color:white;
+padding:15px;
+font-size:18px;
+}
+
+td{
+padding:15px;
+background:white;
+font-size:17px;
+}
+
+/* BARRAS */
+
+.barra{
+background:#ddd;
+border-radius:15px;
+overflow:hidden;
+margin-top:10px;
+height:30px;
+}
+
+.progresso{
+height:30px;
+background:linear-gradient(90deg,#4caf50,#8bc34a);
+text-align:center;
+color:white;
+font-weight:bold;
+line-height:30px;
+}
+
+/* FOOTER */
+
+footer{
+background:#222;
+color:white;
+text-align:center;
+padding:25px;
+font-size:18px;
+margin-top:40px;
+}
+
+/* ANIMAÇÃO */
+
+@keyframes fade{
+
+from{
+opacity:0;
+transform:translateY(20px);
+}
+
+to{
+opacity:1;
+transform:translateY(0);
+}
+
+}
+
+/* RESPONSIVO */
+
+@media(max-width:768px){
+
+header h1{
+font-size:32px;
+}
+
+nav{
+padding:10px;
+}
+
+nav button{
+width:90%;
+}
+
+.card{
+padding:20px;
+}
+
+.card h2{
+font-size:25px;
+}
+
+.card p,
+ul li{
+font-size:16px;
+}
+
+.quiz button{
+width:100%;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>Energia Solar</h1>
+<p>Conheça a energia limpa que ajuda o planeta</p>
+</header>
+
+<nav>
+<button onclick="location.href='index.html'">Home</button>
+<button onclick="mostrarTela('inicio')">Início</button>
+<button onclick="mostrarTela('vantagens')">Vantagens</button>
+<button onclick="mostrarTela('funcionamento')">Funcionamento</button>
+<button onclick="mostrarTela('impactos')">Impactos</button>
+<button onclick="mostrarTela('curiosidades')">Curiosidades</button>
+<button onclick="mostrarTela('economia')">Economia</button>
+<button onclick="mostrarTela('quiz')">Quiz</button>
+</nav>
+
+<section id="inicio">
+
+<div class="card">
+
+<h2>O que é Energia Solar?</h2>
+
+<p>
+A energia solar é uma fonte de energia renovável produzida através da luz do sol.
+Ela é captada por painéis solares que transformam essa energia em eletricidade.
+</p>
+
+<p>
+Esse tipo de energia é sustentável e ajuda a diminuir a poluição no planeta.
+</p>
+
+<img src="https://images.unsplash.com/photo-1509391366360-2e959784a276?q=80&w=1200&auto=format&fit=crop">
+
+</div>
+
+<div class="card">
+
+<h2>História da Energia Solar</h2>
+
+<p>
+Com o avanço da tecnologia, os painéis solares passaram a ser utilizados em casas,
+empresas e até em satélites espaciais.
+</p>
+
+<p>
+Hoje a energia solar é considerada uma das energias mais importantes do futuro.
+</p>
+
+<img src="https://images.unsplash.com/photo-1497436072909-60f360e1d4b1?q=80&w=1200&auto=format&fit=crop">
+
+</div>
+
+</section>
+
+<section id="vantagens">
+
+<div class="card">
+
+<h2>Vantagens da Energia Solar</h2>
+
+<ul>
+<li>Redução da conta de luz</li>
+<li>Energia limpa e sustentável</li>
+<li>Baixa manutenção</li>
+<li>Ajuda o meio ambiente</li>
+<li>Longa duração dos painéis solares</li>
+<li>Valorização do imóvel</li>
+</ul>
+
+<img src="https://images.unsplash.com/photo-1497440001374-f26997328c1b?q=80&w=1200&auto=format&fit=crop">
+
+</div>
+
+</section>
+
+<section id="funcionamento">
+
+<div class="card">
+
+<h2>Como Funciona?</h2>
+
+<p>
+Os painéis solares captam a luz do sol através de células fotovoltaicas.
+Essa energia é transformada em eletricidade para utilização em aparelhos eletrônicos.
+</p>
+
+<p>
+A energia solar pode ser utilizada em:
+</p>
+
+<ul>
+<li>Casas</li>
+<li>Empresas</li>
+<li>Hospitais</li>
+<li>Escolas</li>
+<li>Indústrias</li>
+</ul>
+
+<img src="https://images.unsplash.com/photo-1559302504-64aae6ca6b6d?q=80&w=1200&auto=format&fit=crop">
+
+</div>
+
+</section>
+
+<section id="impactos">
+
+<div class="card">
+
+<h2>Impactos Ambientais</h2>
+
+<p>
+A energia solar ajuda na redução da emissão de gases poluentes,
+preservando o meio ambiente e diminuindo o aquecimento global.
+</p>
+
+<ul>
+<li>Menos poluição</li>
+<li>Preservação da natureza</li>
+<li>Energia sustentável</li>
+<li>Menor impacto ambiental</li>
+</ul>
+
+<img src="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?q=80&w=1200&auto=format&fit=crop">
+
+</div>
+
+</section>
+
+<section id="curiosidades">
+
+<div class="card">
+
+<h2>Curiosidades</h2>
+
+<ul>
+<li>Os painéis solares podem durar mais de 25 anos</li>
+<li>O Brasil possui grande potencial solar</li>
+<li>A energia solar funciona até em dias nublados</li>
+<li>Ela não produz ruídos</li>
+<li>É uma das energias que mais cresce no mundo</li>
+</ul>
+
+<img src="https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?q=80&w=1200&auto=format&fit=crop">
+
+</div>
+
+</section>
+
+<section id="economia">
+
+<div class="card">
+
+<h2>Economia Financeira</h2>
+
+<p>
+A energia solar pode reduzir bastante os gastos com energia elétrica.
+</p>
+
+<p>Conta sem energia solar:</p>
+
+<div class="barra">
+<div class="progresso">R$500</div>
+</div>
+
+<p>Conta com energia solar:</p>
+
+<div class="barra">
+<div class="progresso" style="width:30%">
+R$120
+</div>
+</div>
+
+</div>
+
+</section>
+
+<section id="quiz">
+
+<div class="card quiz">
+
+<h2>Quiz sobre Energia Solar</h2>
+
+<p id="contador">Pontuação: 0</p>
+
+<p>1. A energia solar é:</p>
+
+<button onclick="resposta('certo')">Renovável</button>
+<button onclick="resposta('errado')">Poluente</button>
+
+<p>2. O painel solar capta:</p>
+
+<button onclick="resposta('certo')">Luz do Sol</button>
+<button onclick="resposta('errado')">Água</button>
+
+<p>3. A energia solar ajuda:</p>
+
+<button onclick="resposta('certo')">O Meio Ambiente</button>
+<button onclick="resposta('errado')">A Poluição</button>
+
+<p>4. Energia eólica utiliza:</p>
+
+<button onclick="resposta('certo')">Vento</button>
+<button onclick="resposta('errado')">Petróleo</button>
+
+<h2 id="resultado"></h2>
+
+</div>
+
+</section>
+
+<footer>
+<p>Projeto Educacional sobre Energia Solar</p>
+</footer>
+
+<script>
+
+function mostrarTela(tela){
+
+let secoes = document.querySelectorAll("section");
+
+secoes.forEach(secao =>{
+secao.style.display = "none";
+});
+
+document.getElementById(tela).style.display = "block";
+}
+
+let pontos = 0;
+
+function resposta(tipo){
+
+if(tipo == "certo"){
+pontos++;
+}
+
+document.getElementById("contador").innerHTML =
+"Pontuação: " + pontos;
+
+if(pontos >= 4){
+
+document.getElementById("resultado").innerHTML =
+"🏆 Parabéns! Você conhece muito sobre energia solar!";
+
+}else if(pontos >= 2){
+
+document.getElementById("resultado").innerHTML =
+"👏 Muito bem! Continue aprendendo.";
+
+}else{
+
+document.getElementById("resultado").innerHTML =
+"📚 Continue estudando sobre energia solar.";
+
+}
+
+}
+
+</script>
+
+</body>
+</html>

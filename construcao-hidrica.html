@@ -23,6 +23,41 @@
       box-shadow: var(--shadow);
       border-left: 5px solid var(--secondary-color);
     }
+    .turbinas-container {
+  margin-top: 1.5rem;
+  border-top: 1px solid #eee;
+  padding-top: 1rem;
+}
+
+details {
+  background: var(--bg-light);
+  border-radius: 8px;
+  margin-bottom: 0.8rem;
+  transition: var(--transition);
+}
+
+details summary {
+  padding: 1rem;
+  cursor: pointer;
+  font-weight: bold;
+  list-style: none; 
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--secondary-color);
+}
+
+details[open] summary {
+  border-bottom: 2px solid var(--secondary-color);
+  color: var(--primary-dark);
+}
+
+.details-content {
+  padding: 1rem;
+  font-size: 1.1rem;
+  color: var(--text-light);
+  line-height: 1.5;
+}
   </style>
 </head>
 <body>
@@ -48,10 +83,35 @@
       <h3>2. A Barragem (O Coração da Usina)</h3>
       <p>A estrutura principal é erguida. Pode ser de <strong>concreto de gravidade</strong> (como Itaipu), que usa o próprio peso para segurar a água, ou de <strong>arco</strong>, que transfere a pressão para as montanhas laterais. Esta etapa consome milhões de metros cúbicos de concreto.</p>
     </div>
-    <div class="step-card">
-      <h3>3. Casa de Força e Turbinas</h3>
-      <p>Local onde a mágica acontece. Instalam-se as turbinas (Francis, Kaplan ou Pelton, dependendo da queda d'água). Quando a água desce pelos condutos forçados, ela gira a turbina, que aciona o gerador para criar eletricidade.</p>
-    </div>
+   <div class="step-card">
+  <h3>3. Casa de Força e Turbinas</h3>
+  <p>Local onde a mágica acontece. A água desce pelos condutos forçados e gira a turbina, que aciona o gerador.</p>
+  
+  <div class=\"turbinas-container\">
+    <h4>Tipos de Turbinas:</h4>
+    
+    <details>
+      <summary>Turbina Francis <i class=\"fas fa-chevron-down\"></i></summary>
+      <div class=\"details-content\">
+        <p>A mais comum. Ideal para quedas d'água médias e grandes vazões. É usada em Itaipu.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>Turbina Kaplan <i class=\"fas fa-chevron-down\"></i></summary>
+      <div class=\"details-content\">
+        <p>Funciona como uma hélice de navio com pás ajustáveis. Ideal para pequenas quedas e grandes volumes de água.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>Turbina Pelton <i class=\"fas fa-chevron-down\"></i></summary>
+      <div class=\"details-content\">
+        <p>Parece uma roda de moinho com baldes. Usada em quedas d'água muito altas e baixo volume de água.</p>
+      </div>
+    </details>
+  </div>
+</div>
     <div class="step-card">
       <h3>4. O Reservatório e Vertedouro</h3>
       <p>Após a conclusão, as comportas de desvio são fechadas e o reservatório começa a encher. O <strong>vertedouro</strong> é construído como uma "válvula de escape" para descartar o excesso de água em épocas de cheia, garantindo a segurança da estrutura.</p>

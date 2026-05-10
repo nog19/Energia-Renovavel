@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Quiz - Energia Eólica</title>
+        <link rel="stylesheet" href="ee.css">
+    </head>
+    <body>
+        <nav class="site-nav">
+            <a class="logo" href="index.html">💨 EcoEnergy - Eólica</a>
+            <ul class="nav-list">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="ee.html">Eólica Básica</a></li>
+                <li><a href="ee.html#principios">Princípios</a></li>
+                <li><a href="ee.html#tipos">Tipos de turbinas</a></li>
+                <li><a href="ee.html#beneficios">Benefícios</a></li>
+                <li><a href="quiz.html">Quiz</a></li>
+            </ul>
+            <button id="theme-toggle" class="theme-toggle" aria-pressed="false" title="Alternar modo noturno">🌙</button>
+        </nav>
+
+        <header class="hero quiz-hero" id="home">
+            <div class="hero-inner">
+                <h1>Quiz sobre Energia Eólica</h1>
+                <p>Teste seus conhecimentos sobre turbinas, vento, benefícios e desafios da energia eólica.</p>
+                <a class="btn" href="#quiz">Começar Quiz</a>
+            </div>
+        </header>
+
+        <main>
+            <section class="section quiz-page-section" id="quiz">
+                <h2>Teste seus conhecimentos</h2>
+                <div class="quiz-card quiz-card-large">
+                    <div id="quiz-question">Carregando pergunta...</div>
+                    <div id="quiz-options" class="quiz-options"></div>
+                    <div id="quiz-feedback" class="quiz-feedback" aria-live="polite"></div>
+                    <div class="quiz-controls">
+                        <button id="quiz-next" class="btn">Próxima</button>
+                        <button id="quiz-restart" class="btn" style="display:none">Reiniciar</button>
+                    </div>
+                    <div id="quiz-result" class="quiz-result" style="display:none"></div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="site-footer">
+            <p>Energia Eólica</p>
+            <p><a href="ee.html">Voltar para a página principal</a></p>
+        </footer>
+        <script>
+            (function(){
+                const btn = document.getElementById('theme-toggle');
+                const body = document.body;
+                const saved = localStorage.getItem('ee-theme');
+                if(saved === 'dark') body.classList.add('dark');
+                function updateButton(){
+                    if(!btn) return;
+                    const isDark = body.classList.contains('dark');
+                    btn.textContent = isDark ? '☀️' : '🌙';
+                    btn.setAttribute('aria-pressed', isDark);
+                }
+                updateButton();
+                if(btn) btn.addEventListener('click', ()=>{
+                    body.classList.toggle('dark');
+                    localStorage.setItem('ee-theme', body.classList.contains('dark') ? 'dark' : 'light');
+                    updateButton();
+                });
+            })();
+
+            (function(){
+                const questions = [
+                    {
+                        q: 'O que converte o movimento do vento em eletricidade dentro da turbina?',
+                        options: ['O anemômetro','As pás/rotor e o gerador','O transformador','A torre'],
+                        a: 1,
+                        explanation: 'As pás (rotor) capturam a energia do vento e o gerador a converte em eletricidade. Anemômetros medem o vento, mas não geram energia.'
+                    },
+                    {
+                        q: 'Como a potência disponível varia com a velocidade do vento?',
+                        options: ['Proporcional à velocidade (v)','Proporcional ao quadrado (v²)','Proporcional ao cubo (v³)','Independe da velocidade'],
+                        a: 2,
+                        explanation: 'A potência disponível no vento cresce com o cubo da velocidade (P ∝ v³), por isso pequenos aumentos na velocidade trazem grandes ganhos de energia.'
+                    },
+                    {
+                        q: 'Quais instrumentos são usados para medir e mapear o perfil do vento?',
+                        options: ['LIDAR e anemômetros','Pluviômetros','Higrômetros','Barômetros'],
+                        a: 0,
+                        explanation: 'Anemômetros e LIDAR são usados para medir velocidade e perfil do vento — informações essenciais para dimensionar parques eólicos.'
+                    },
+                    {
+                        q: 'Qual é uma vantagem típica de turbinas offshore?',
+                        options: ['Mais próximo do ponto de consumo','Ventos mais fortes e constantes','Instalação mais barata','Menor necessidade de manutenção'],
+                        a: 1,
+                        explanation: 'Offshore geralmente apresenta ventos mais fortes e constantes do que onshore, aumentando a produção por turbina — embora a instalação e manutenção sejam mais caras.'
+                    },
+                    {
+                        q: 'Qual é uma estratégia comum para mitigar a intermitência do vento?',
+                        options: ['Desligar todas as turbinas à noite','Combinar com armazenamento e previsão','Construir mais termelétricas','Remover aerogeradores menores'],
+                        a: 1,
+                        explanation: 'Combinar armazenamento (baterias), outras fontes renováveis e sistemas de previsão é uma estratégia eficaz para reduzir problemas da intermitência.'
+                    }
+                ];
+
+                let current = 0;
+                let score = 0;
+                const qEl = document.getElementById('quiz-question');
+                const optsEl = document.getElementById('quiz-options');
+                const feedbackEl = document.getElementById('quiz-feedback');
+                const nextBtn = document.getElementById('quiz-next');
+                const restartBtn = document.getElementById('quiz-restart');
+                const resultEl = document.getElementById('quiz-result');
+
+                function renderQuestion(){
+                    const item = questions[current];
+                    qEl.textContent = (current + 1) + '. ' + item.q;
+                    optsEl.innerHTML = '';
+                    feedbackEl.innerHTML = '';
+                    item.options.forEach((opt, i)=>{
+                        const b = document.createElement('button');
+                        b.className = 'quiz-option';
+                        b.textContent = opt;
+                        b.disabled = false;
+                        b.addEventListener('click', ()=> selectOption(i, b));
+                        optsEl.appendChild(b);
+                    });
+                    nextBtn.style.display = 'none';
+                }
+
+                function selectOption(index, btn){
+                    const item = questions[current];
+                    const correct = index === item.a;
+                    Array.from(optsEl.children).forEach(b=>b.disabled = true);
+                    btn.classList.add(correct ? 'correct' : 'wrong');
+                    const explanation = item.explanation ? ('\n' + item.explanation) : '';
+                    if(correct){
+                        feedbackEl.textContent = 'Correto!' + explanation;
+                    } else {
+                        feedbackEl.textContent = 'Incorreto. Resposta correta: ' + item.options[item.a] + '.' + explanation;
+                    }
+                    if(correct) score++;
+                    nextBtn.style.display = 'inline-block';
+                    nextBtn.textContent = current === questions.length - 1 ? 'Ver Resultado' : 'Próxima';
+                }
+
+                function showResult(){
+                    resultEl.style.display = 'block';
+                    resultEl.innerHTML = '<strong>Você acertou ' + score + ' de ' + questions.length + '.</strong>';
+                    nextBtn.style.display = 'none';
+                    restartBtn.style.display = 'inline-block';
+                }
+
+                nextBtn.addEventListener('click', ()=>{
+                    if(current < questions.length - 1){
+                        current++;
+                        renderQuestion();
+                    } else {
+                        showResult();
+                    }
+                });
+
+                restartBtn.addEventListener('click', ()=>{
+                    current = 0;
+                    score = 0;
+                    resultEl.style.display = 'none';
+                    restartBtn.style.display = 'none';
+                    renderQuestion();
+                });
+
+                renderQuestion();
+            })();
+        </script>
+    </body>
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Energia Eólica - Detalhes</title>
+        <link rel="stylesheet" href="ee.css">
+    </head>
+    <body>
+        <nav class="site-nav">
+            <a class="logo" href="index.html">💨 EcoEnergy - Eólica</a>
+            <ul class="nav-list">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="ee.html">Eólica Básica</a></li>
+                <li><a href="#principios">Princípios</a></li>
+                <li><a href="#tipos">Tipos de turbinas</a></li>
+                <li><a href="#beneficios">Benefícios</a></li>
+                <li><a href="quiz.html">Quiz</a></li>
+            </ul>
+            <button id="theme-toggle" class="theme-toggle" aria-pressed="false" title="Alternar modo noturno">🌙</button>
+        </nav>
+
+        <header class="hero" id="home">
+            <div class="hero-inner">
+                <h1>Energia Eólica: Como funciona e por que é essencial</h1>
+                <p>Energia eólica é a conversão direta da energia cinética do vento em eletricidade. Usando turbinas eólicas modernas, esta fonte renovável é estratégica para reduzir emissões e no planejamento de um sistema elétrico sustentável.</p>
+                <a class="btn" href="#beneficios">Ver Benefícios</a>
+            </div>
+        </header>
+
+        <main>
+            <section class="section" id="principios">
+                <h2>Princípios de Funcionamento</h2>
+                <p class="callout">Vento é energia em movimento. Mais velocidade de vento significa muito mais potência: potência cresce com o cubo da velocidade (P ∝ v³).</p>
+                <div class="card-grid">
+                    <article class="card">
+                        <h3>Medição do vento</h3>
+                        <p>Anemômetros e sistemas LIDAR são usados para mapear intensidade e perfil do vento antes e durante a operação do parque. Esses dados definem a viabilidade técnica e econômica do projeto.</p>
+                    </article>
+                    <article class="card">
+                        <h3>Rotor, eixo e gerador</h3>
+                        <p>O rotor (pás + cubo) transforma energia do vento em rotação mecânica. Em seguida, uma caixa de engrenagens (ou um gerador direto) converte esse movimento em eletricidade.</p>
+                    </article>
+                    <article class="card">
+                        <h3>Controle das pás e segurança</h3>
+                        <p>Sistemas de controle ajustam o ângulo das pás (pitch) e o posicionamento da nacelle (yaw) para maximizar a eficiência e proteger a turbina em ventos extremos.</p>
+                    </article>
+                </div>
+            </section>
+
+            <section class="section" id="tipos">
+                <h2>Tipos de Turbinas</h2>
+                <div class="card-grid">
+                    <article class="card"><h3>Onshore</h3><p>Instaladas em terra, com custos de implantação e manutenção menores. Bom custo-benefício em terrenos adequados.</p></article>
+                    <article class="card"><h3>Offshore</h3><p>Instaladas no mar, aproveitam ventos mais fortes e constantes, com maior potencial energético por unidade instalada.</p></article>
+                    <article class="card"><h3>Flutuantes</h3><p>Turbinas em plataformas flutuantes permitem exploração de águas profundas, expandindo áreas possíveis para parques offshore.</p></article>
+                    <article class="card"><h3>Eixo Vertical</h3><p>Soluções menores e específicas para ambientes urbanos e aplicações locais; ainda pouco usadas em larga escala.</p></article>
+                </div>
+            </section>
+
+            <section class="section" id="beneficios">
+                <h2>Benefícios</h2>
+                <ul class="benefits">
+                    <li>Renovável e inesgotável enquanto houver vento.</li>
+                    <li>Zero emissões diretas de CO₂ na operação.</li>
+                    <li>Baixo consumo de água comparado a termelétricas.</li>
+                    <li>Geração de empregos e desenvolvimento regional.</li>
+                </ul>
+            </section>
+
+            <section class="section" id="desafios">
+                <h2>Desafios e Mitigações</h2>
+                <div class="card-grid">
+                    <article class="card"><h3>Intermitência</h3><p>Combinação com armazenamento (baterias), outras renováveis e sistemas de previsão melhoram a estabilidade da oferta.</p></article>
+                    <article class="card"><h3>Impactos ambientais</h3><p>Estudos de impacto ambiental e monitoramento reduzem efeitos sobre aves e habitats locais.</p></article>
+                    <article class="card"><h3>Integração à rede</h3><p>Transformadores, linhas de transmissão e gerenciamento com redes inteligentes garantem transporte eficiente e confiável da energia gerada.</p></article>
+                </div>
+            </section>
+
+        </main>
+
+        <footer class="site-footer">
+            <p>Energia Eólica</p>
+            <p><a href="index.html">Voltar para a homepage</a></p>
+        </footer>
+        <script>
+            (function(){
+                const btn = document.getElementById('theme-toggle');
+                const body = document.body;
+                const saved = localStorage.getItem('ee-theme');
+                if(saved === 'dark') body.classList.add('dark');
+                function updateButton(){
+                    if(!btn) return;
+                    const isDark = body.classList.contains('dark');
+                    btn.textContent = isDark ? '☀️' : '🌙';
+                    btn.setAttribute('aria-pressed', isDark);
+                }
+                updateButton();
+                if(btn) btn.addEventListener('click', ()=>{
+                    body.classList.toggle('dark');
+                    localStorage.setItem('ee-theme', body.classList.contains('dark') ? 'dark' : 'light');
+                    updateButton();
+                });
+            })();
+
+        </script>
+    </body>
+</html>

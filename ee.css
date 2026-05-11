@@ -1,0 +1,74 @@
+/* ee.css - estilos para a página de energia eólica */
+:root{
+  --primary:#1f5cb2;
+  --accent:#63a6f4;
+  --muted:#d9ecff;
+  --bg:#eef5ff;
+  --card-bg:#ffffff;
+  --text:#1b2e54;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:Segoe UI, Roboto, system-ui, -apple-system, 'Helvetica Neue', Arial,sans-serif;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased}
+.site-nav{display:flex;align-items:center;justify-content:space-between;padding:14px 18px;background:var(--primary);color:#fff;gap:12px}
+.site-nav .logo{color:#fff;text-decoration:none;font-weight:700}
+.nav-list{list-style:none;margin:0;padding:0;display:flex;gap:10px}
+.nav-list a{color:#fff;text-decoration:none;padding:8px 10px;border-radius:8px;transition:background .18s}
+.nav-list a:hover{background:rgba(255,255,255,0.12)}
+.hero{padding:56px 18px;color:#fff;text-align:center; background-color:var(--primary); background-blend-mode:overlay; background-size:cover; background-position:center; background-repeat:no-repeat;}
+
+.hero{background-image: linear-gradient(130deg, rgba(31,92,178,0.72), rgba(99,166,244,0.45)), url("parque-eolico.svg");}
+.hero-inner{max-width:980px;margin:0 auto}
+.hero h1{margin:0;font-size:2rem;line-height:1.15}
+.hero p{margin-top:12px;margin-bottom:16px;line-height:1.5}
+.btn{display:inline-block;background:#fff;color:var(--primary);padding:10px 16px;border-radius:999px;text-decoration:none;font-weight:700}
+.section{max-width:1100px;margin:26px auto;padding:0 18px}
+.section h2{margin:0 0 10px;padding-bottom:8px;border-bottom:3px solid rgba(138,192,240,0.35);color:var(--text)}
+.callout{background:var(--muted);padding:12px 14px;border-left:4px solid var(--primary);border-radius:6px;margin:12px 0}
+.card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin-top:14px}
+.card{background:var(--card-bg);padding:14px;border-radius:10px;box-shadow:0 8px 20px rgba(21,48,87,0.09);border:1px solid #e6eefc}
+.card h3{margin-top:0}
+.benefits{list-style:disc;padding-left:20px}
+.site-footer{background:var(--primary);color:#fff;padding:16px;text-align:center}
+.site-footer a{color:#fff;font-weight:700}
+@media (max-width:720px){
+  .nav-list{display:none}
+  .hero h1{font-size:1.5rem}
+}
+
+/* Theme toggle button */
+.theme-toggle{width:44px;height:44px;border-radius:50%;border:none;background:#fff;color:var(--primary);display:inline-flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 6px 16px rgba(12,30,60,0.12);font-size:18px}
+.theme-toggle:active{transform:translateY(1px)}
+
+/* Dark mode variables and overrides */
+.dark{--primary:#0b2540;--accent:#174b7a;--muted:#0f2436;--bg:#071226;--card-bg:#0f1b2b;--text:#e6f0ff}
+.dark body, .dark{background:var(--bg);color:var(--text)}
+.dark .site-nav{background:var(--primary)}
+.dark .nav-list a{color:rgba(255,255,255,0.9)}
+.dark .hero{background-image: linear-gradient(130deg, rgba(11,37,64,0.8), rgba(23,75,122,0.5)), url("campo-lua.svg"); background-size:cover; background-position:center}
+.dark .card{background:var(--card-bg);border-color:rgba(255,255,255,0.02);box-shadow:0 12px 30px rgba(2,8,20,0.6)}
+/* bordas circulares no modo noturno */
+.dark .card{border-radius:28px}
+.dark .hero h1{color:var(--text)}
+.dark .btn{background:var(--text);color:var(--primary)}
+
+/* Quiz styles */
+.quiz-card{background:var(--card-bg);padding:18px;border-radius:12px;border:1px solid #e6eefc;max-width:760px;margin-top:12px}
+.quiz-options{display:flex;flex-direction:column;gap:8px;margin-top:12px}
+.quiz-option{padding:10px 12px;border-radius:10px;border:1px solid rgba(0,0,0,0.06);background:#f7fbff;cursor:pointer;text-align:left}
+.quiz-option:hover{background:#e6f0ff}
+.quiz-option.correct{background:#d4f8e1;border-color:#7bd18a}
+.quiz-option.wrong{background:#ffdede;border-color:#ff8a8a}
+.quiz-feedback{margin-top:10px;font-weight:600}
+.quiz-controls{margin-top:14px;display:flex;gap:8px}
+.quiz-result{margin-top:12px;padding:12px;background:#fff8df;border-radius:10px}
+.quiz-hero{min-height:300px;display:flex;align-items:center}
+.quiz-page-section{min-height:360px}
+.quiz-card-large{max-width:860px;margin:18px auto 0;padding:22px}
+
+/* Dark mode adjustments for quiz */
+.dark .quiz-card{background:var(--card-bg);border-color:rgba(255,255,255,0.04);box-shadow:0 12px 30px rgba(2,8,20,0.6);}
+.dark .quiz-option{background:rgba(255,255,255,0.03);border-color:rgba(255,255,255,0.03);color:var(--text)}
+.dark .quiz-option:hover{background:rgba(255,255,255,0.04)}
+.dark .quiz-option.correct{background:#163e22}
+.dark .quiz-option.wrong{background:#3a1212}
+.dark .quiz-result{background:rgba(255,255,255,0.03)}
